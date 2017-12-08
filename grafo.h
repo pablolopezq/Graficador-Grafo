@@ -36,7 +36,8 @@ public:
     bool existeVertice(string nombreVertice);
     int getNumVertices();
     void BFS(string nombreOrigen);
-    //void DFS(string nombreOrigen);
+    void DFS(string nombreOrigen);
+    void auxDFS(string nombreOrigen, ListaVertices* visited);
     //Grafo* dijsktra();
     Grafo* copiarGrafo();
     Grafo* copiarGrafoVerts();

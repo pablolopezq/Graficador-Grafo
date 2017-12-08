@@ -218,7 +218,24 @@ Grafo* Grafo::floydWarshall()
     return newGraph;
 }
 
+void Grafo::auxDFS(string nombreOrigen, ListaVertices *visited)
+{
+    Vertice* tmp = this->obtenerVertice(nombreOrigen);
+    visited->agregar(tmp);
+    ListaAristas* lista = tmp->listaAristas;
+    for(int r = 0; r < lista->getCantElementos(); r++)
+    {
+        Arista* temp = lista->obtenerAristaPos(r);
+        if(!visited->existe(temp->destino->nombre))
+        {
+            cout << " :: " << temp->destino->nombre << endl;
+            auxDFS(temp->destino->nombre, visited);
+        }
+    }
+}
+
 void Grafo::DFS(string nombreOrigen)
 {
     ListaVertices* visited = new ListaVertices();
+    this->auxDFS(nombreOrigen, visited);
 }
